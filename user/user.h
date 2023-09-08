@@ -22,6 +22,12 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+#ifdef LAB_PGTBL
+// usyscall region
+int ugetpid(void);
+void kpgtbl(void);
+int pgaccess(void *base, int len, void *mask);
+#endif
 
 // ulib.c
 int stat(const char*, struct stat*);

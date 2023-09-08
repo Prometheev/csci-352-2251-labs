@@ -70,6 +70,27 @@ sys_sleep(void)
   return 0;
 }
 
+#ifdef LAB_PGTBL
+int
+sys_kpgtbl(void)
+{
+  struct proc *p;
+
+  p = myproc();
+  vmprint(p->pagetable);
+  return 0;
+}
+#endif
+
+#ifdef LAB_PGTBL
+int
+sys_pgaccess(void)
+{
+  // TODO: Your code here
+  return 0;
+}
+#endif
+
 uint64
 sys_kill(void)
 {
