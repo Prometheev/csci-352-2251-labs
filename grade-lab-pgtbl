@@ -17,6 +17,14 @@ def test_pgtbltest():
 def test_ugetpid_():
     r.match('^ugetpid_test: OK$')
 
+@test(10, "pgtbltest: ugetpid_perm", parent=test_pgtbltest)
+def test_ugetpid_perm_():
+    r.match(
+        '^usertrap\\(\\): unexpected scause 0xf.*$',
+        '^.*stval=0x3fffffd000$',
+        '^ugetpid_perm_test: OK$',
+    )
+
 @test(10, "pgtbltest: print_kpgtbl", parent=test_pgtbltest)
 def test_print_kpgtbl_():
     r.match(
