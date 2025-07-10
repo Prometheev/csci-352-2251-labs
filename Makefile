@@ -225,6 +225,9 @@ ifeq ($(LAB),thread)
 UPROGS += \
 	$U/_uthread
 
+$U/uthread.o: $U/uthread.c
+	$(CC) $(CFLAGS) -mno-relax -c -o $@ $<
+
 $U/uthread_switch.o : $U/uthread_switch.S
 	$(CC) $(CFLAGS) -c -o $U/uthread_switch.o $U/uthread_switch.S
 
